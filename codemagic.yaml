@@ -1,0 +1,60 @@
+workflows:
+
+  build-app:
+
+    name: Build Android and iOS
+
+    instance_type: mac_mini_m1
+
+    environment:
+
+      vars:
+
+        NODE_VERSION: 16  # Set to Node 16 to support legacy expo-cli
+
+        EXPO_CLI_VERSION: latest
+
+      flutter: stable  # Include this if you're using Flutter as well; otherwise, it's optional
+
+    scripts:
+
+      # Install dependencies
+
+      - name: Install dependencies
+
+        script: |
+
+          npm install -g expo-cli@$EXPO_CLI_VERSION
+
+          npm install
+
+
+
+
+      # Build Android APK
+
+      - name: Build Android
+
+        script: |
+
+          expo build:android --no-publish
+
+
+
+
+      # Build iOS IPA
+
+      - name: Build iOS
+
+        script: |
+
+          expo build:ios --no-publish
+
+
+
+
+    artifacts:
+
+      - android/app/build/outputs/**/*.apk
+
+      - ios/build/*.ipa  # Adjust based on your expo build output

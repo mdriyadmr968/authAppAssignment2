@@ -1,0 +1,14 @@
+// tailwind.config.js
+
+module.exports = {
+  content: ["./App.{js,jsx,ts,tsx}", "./app/**/*.{js,jsx,ts,tsx}"],
+  theme: {
+    extend: {
+      colors: {
+        neon: "#BBFF00",
+        black: "#0C0C0C",
+      },
+    },
+  },
+  plugins: [],
+};
